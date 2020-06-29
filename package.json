@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/aneeshkodali/MatchChartingProject/issues"
   },
-  "homepage": "https://github.com/aneeshkodali/MatchChartingProject#readme"
+  "homepage": "https://github.com/aneeshkodali/MatchChartingProject#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
