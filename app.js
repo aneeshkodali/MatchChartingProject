@@ -1,14 +1,19 @@
 // import
 const express = require("express");
+const mongoose = require("mongoose");
 
 
 
-
+// ================
 // APP CONFIG
+// ================
 const app = express();
 
 
-
+// ================
+// DB CONFIG
+// ================
+mongoose.connect('mongodb://localhost/matchChartingProject', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 
