@@ -4,10 +4,10 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 // connect to DB
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mcp";
-mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-.then(() => console.log("CONNECTED TO DB"))
-.catch(err => console.log(err));
+//const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mcp";
+//mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+//.then(() => console.log("CONNECTED TO DB"))
+//.catch(err => console.log(err));
 
 
 // create schema
@@ -48,14 +48,19 @@ module.exports = Player;
 // 4) get variables
 // 5) push to DB
 
-const getLinkTA = function(link_ml) {
-  axiosget(link_ml).then(function(response) {
-    
-    const $ = cheerio.load(response.data);
-    const link_ta = $('a').first().attr('href');
-    return link_ta;
-  });
-}
+
+//const getLinkTA = function(link_ml) {
+//  axios.get(link_ml).then(function(response) {
+//    const $ = cheerio.load(response.data);
+//    let link_ta = $('a').first().attr('href');
+//    link_ta = link_ta.replace('-classic', '');
+
+//  })
+
+//}
+//console.log(getLinkTA('http://www.minorleaguesplits.com/tennisabstract/cgi-bin/frags/RogerFederer.js'));
+
+
 const addPlayerToDB = function(link_ta) {
   axios.get(link_ta).then(function(response) {
     
