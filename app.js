@@ -1,6 +1,7 @@
 // import
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 
 
@@ -8,6 +9,10 @@ const mongoose = require("mongoose");
 // APP CONFIG
 // ================
 const app = express();
+// parse request body as JSON
+app.use(bodyParser.urlencoded({extended: true}));
+// config app to use ejs files
+app.set("view engine", "ejs");
 
 
 // ================
@@ -25,7 +30,7 @@ mongoose.connect('mongodb://localhost/matchChartingProject', {useNewUrlParser: t
 
 // root
 app.get("/", function(req, res) {
-    res.send("HOME PAGE! YOU DID IT!");
+    res.render("index");
 });
 
 
