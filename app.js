@@ -2,8 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const axios = require("axios");
-const cheerio = require("cheerio");
+
 const Player = require("./models/player");
 
 

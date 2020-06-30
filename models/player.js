@@ -1,4 +1,13 @@
+// import
 const mongoose = require("mongoose");
+const axios = require("axios");
+const cheerio = require("cheerio");
+
+// connect to DB
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mcp";
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => console.log("CONNECTED TO DB"))
+.catch(err => console.log(err));
 
 
 // create schema
@@ -46,7 +55,7 @@ axios.get(linkTA = "http://www.tennisabstract.com/cgi-bin/wplayer.cgi?p=SerenaWi
     // object to store column:value pairs
     const playerObj = {};
     // add link to object
-    playerObj['linkTA'] = linkTA;
+    playerObj['link_ta'] = linkTA;
     // add gender
     playerObj['gender'] = linkTA.includes('wplayer') ? "W" : "M";
 
@@ -72,18 +81,29 @@ axios.get(linkTA = "http://www.tennisabstract.com/cgi-bin/wplayer.cgi?p=SerenaWi
     }
     playerObj['img'] = photo.replace(/'/g,"");
 
-    console.log(playerObj);
+    //console.log(playerObj);
     
     // create player record
-    Player.create(playerObj, function(err, newPlayer) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(`Added ${playerObj['fullname']}`);
-        }
-    })
+    //Player.create(playerObj, function(err, newPlayer) {
+    //    if (err) {
+    //        console.log(err);
+    //    } else {
+    //        console.log(`Added ${playerObj['fullname']}`);
+    //    }
+    //})
 
 });
+
+const findPlayersInDB = function() {
+  Player.find({}, function(err, players) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(players);
+    }
+  });
+}
+findPlayersInDB()
 
 
 
