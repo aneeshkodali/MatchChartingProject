@@ -127,19 +127,19 @@ const getPlayersInDB = function() {
 
 
 
-const testlink = 'http://www.minorleaguesplits.com/tennisabstract/cgi-bin/frags/RafaelNadal.js';
-axios.get(testlink)
-.then(function(response) {
-  const $ = cheerio.load(response.data);
-  let link = $("a").first().attr('href');
-  return link.replace('-classic','');
-})
-.catch(function(error) {
-  console.log(error);
-})
-.then(function(link) {
-  //console.log(link)
-  addPlayerToDB(link);
-})
+//const testlink = 'http://www.minorleaguesplits.com/tennisabstract/cgi-bin/frags/RafaelNadal.js';
+//axios.get(testlink)
+//.then(function(response) {
+//  const $ = cheerio.load(response.data);
+//  let link = $("a").first().attr('href');
+//  return link.replace('-classic','');
+//})
+//.catch(function(error) {
+//  console.log(error);
+//})
+//.then(function(link) {
+//  //console.log(link)
+//  addPlayerToDB(link);
+//})
 
 //addPlayerToDB('http://www.tennisabstract.com/cgi-bin/player.cgi?p=RafaelNadal')

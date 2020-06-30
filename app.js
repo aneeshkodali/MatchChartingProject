@@ -40,7 +40,8 @@ app.get("/", function(req, res) {
 
 // players
 app.get("/players", function(req, res) {
-    res.send("YOU HAVE REACHED THE PLAYER PAGE");
+    
+    res.render("players");
 });
 
 app.get("/players/:player", function(req, res) {
