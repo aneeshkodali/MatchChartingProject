@@ -38,6 +38,16 @@ app.get("/", function(req, res) {
     res.render("home");
 });
 
+// players
+app.get("/players", function(req, res) {
+    res.send("YOU HAVE REACHED THE PLAYER PAGE");
+});
+
+app.get("/players/:player", function(req, res) {
+    const player = req.params.player;
+    res.send(`YOU HAVE REACHED ${player}'S PAGE`);
+})
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, function() {
