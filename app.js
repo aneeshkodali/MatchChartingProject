@@ -21,7 +21,7 @@ app.set("view engine", "ejs");
 // DB CONFIG
 // ================
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mcp";
-mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 .then(() => console.log("CONNECTED TO DB"))
 .catch(err => console.log(err));
 
