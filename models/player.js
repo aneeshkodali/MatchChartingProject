@@ -95,15 +95,16 @@ const addPlayerToDB = function(link_ta) {
       }
       playerObj['img'] = photo.replace(/'/g,"");
 
+      console.log(playerObj);
       
       // create player record
-      Player.create(playerObj, function(err, newPlayer) {
-          if (err) {
-              console.log(err);
-          } else {
-              console.log(`Added ${playerObj['fullname']}`);
-          }
-      })
+      //Player.create(playerObj, function(err, newPlayer) {
+      //    if (err) {
+      //        console.log(err);
+      //    } else {
+      //        console.log(`Added ${playerObj['fullname']}`);
+      //    }
+      //})
 
   });
 }
@@ -123,3 +124,22 @@ const getPlayersInDB = function() {
 
 
 
+
+
+
+const testlink = 'http://www.minorleaguesplits.com/tennisabstract/cgi-bin/frags/RafaelNadal.js';
+axios.get(testlink)
+.then(function(response) {
+  const $ = cheerio.load(response.data);
+  let link = $("a").first().attr('href');
+  return link.replace('-classic','');
+})
+.catch(function(error) {
+  console.log(error);
+})
+.then(function(link) {
+  //console.log(link)
+  addPlayerToDB(link);
+})
+
+//addPlayerToDB('http://www.tennisabstract.com/cgi-bin/player.cgi?p=RafaelNadal')
