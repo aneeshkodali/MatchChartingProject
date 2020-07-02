@@ -12,15 +12,15 @@ const cheerio = require("cheerio");
 
 // create schema
 const playerSchema = new mongoose.Schema({
-  //link_orig: String,
-  link_ta: {type: String, unique: true},
+  link_ml: {type: String, unique: true},
+  link_ta: String,
   gender: String,
   fullname: String,
   lastname: String,
-  dob: String,
-  ht: String,
+  dob: Date,
+  ht: Number,
   hand: String,
-  backhand: String,
+  backhand: Number,
   country: String,
   twitter: String,
   itf_id: String,
