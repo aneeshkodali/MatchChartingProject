@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 
 const Player = require("./models/player");
 
-
+const seedDBPlayer = require("./seeds/player");
 
 // ================
 // APP CONFIG
@@ -16,6 +16,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 // config app to use ejs files
 app.set("view engine", "ejs");
 
+seedDBPlayer();
+
 
 // ================
 // DB CONFIG
@@ -24,6 +26,8 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mcp";
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 .then(() => console.log("CONNECTED TO DB"))
 .catch(err => console.log(err));
+
+
 
 
 
