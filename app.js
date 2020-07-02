@@ -7,6 +7,9 @@ const Player = require("./models/player");
 
 const seedDBPlayer = require("./seeds/player");
 
+const playerRoutes = require("./routes/players");
+
+
 // ================
 // APP CONFIG
 // ================
@@ -17,6 +20,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 seedDBPlayer();
+
+app.use("/players", playerRoutes);
 
 
 // ================
@@ -42,29 +47,9 @@ app.get("/", function(req, res) {
     res.render("home");
 });
 
-// INDEX PLAYERS - show all players
-app.get("/players", function(req, res) {
-    Player.find({}, function(err, players) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("players", {players: players});
-        }
-    })
-    
-});
 
-// SHOW PLAYERS - show page for 1 player
-app.get("/players/:id", function(req, res) {
-    // find players with given ID
-    Player.findById(req.params.id).exec(function(err, foundPlayer) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send("PLAYER PAGE");
-        }
-    })
-})
+
+
 
 
 const port = process.env.PORT || 3000;
