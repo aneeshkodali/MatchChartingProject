@@ -42,10 +42,16 @@ app.get("/", function(req, res) {
     res.render("home");
 });
 
-// players
+// players - show all players
 app.get("/players", function(req, res) {
+    Player.find({}, function(err, players) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("players", {players: players});
+        }
+    })
     
-    res.render("players");
 });
 
 

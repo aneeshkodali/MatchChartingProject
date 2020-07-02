@@ -2,4 +2,8 @@
 
 <h1>YOU HAVE REACHED THE PLAYER PAGE</h1>
 
+<% players.forEach(function(player) { %>
+    <li><%= player.fullname %></li>
+<% }) %>
+
 <%- include("partials/footer") %>

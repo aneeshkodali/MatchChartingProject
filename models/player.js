@@ -1,7 +1,7 @@
 // import
 const mongoose = require("mongoose");
-const axios = require("axios");
-const cheerio = require("cheerio");
+//const axios = require("axios");
+//const cheerio = require("cheerio");
 
 // connect to DB
 //const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mcp";
