@@ -42,7 +42,7 @@ app.get("/", function(req, res) {
     res.render("home");
 });
 
-// players - show all players
+// INDEX PLAYERS - show all players
 app.get("/players", function(req, res) {
     Player.find({}, function(err, players) {
         if (err) {
@@ -53,6 +53,18 @@ app.get("/players", function(req, res) {
     })
     
 });
+
+// SHOW PLAYERS - show page for 1 player
+app.get("/players/:id", function(req, res) {
+    // find players with given ID
+    Player.findById(req.params.id).exec(function(err, foundPlayer) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send("PLAYER PAGE");
+        }
+    })
+})
 
 
 const port = process.env.PORT || 3000;
