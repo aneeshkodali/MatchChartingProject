@@ -61,65 +61,65 @@ module.exports = Player;
 //console.log(getLinkTA('http://www.minorleaguesplits.com/tennisabstract/cgi-bin/frags/RogerFederer.js'));
 
 
-const addPlayerToDB = function(link_ta) {
-  axios.get(link_ta).then(function(response) {
+//const addPlayerToDB = function(link_ta) {
+//  axios.get(link_ta).then(function(response) {
     
-      const $ = cheerio.load(response.data);
+//      const $ = cheerio.load(response.data);
 
-      // object to store column:value pairs
-      const playerObj = {};
-      // add link to object
-      playerObj['link_ta'] = link_ta;
-      // add gender
-      playerObj['gender'] = link_ta.includes('wplayer') ? "W" : "M";
+//      // object to store column:value pairs
+//      const playerObj = {};
+//      // add link to object
+//      playerObj['link_ta'] = link_ta;
+//      // add gender
+//      playerObj['gender'] = link_ta.includes('wplayer') ? "W" : "M";
 
-      // list of columns we will iterate through
-      const columnArr = ["fullname", "lastname", "dob", "ht", "hand", "backhand", "country", "twitter", "itf_id", "atp_id", "dc_id", "wiki_id"]
+//      // list of columns we will iterate through
+//      const columnArr = ["fullname", "lastname", "dob", "ht", "hand", "backhand", "country", "twitter", "itf_id", "atp_id", "dc_id", "wiki_id"]
       
-      const script = $("script[language='JavaScript']")['0'].children['0'].data;
+//      const script = $("script[language='JavaScript']")['0'].children['0'].data;
 
-      // iterate through column array
-      // column values can be found in script tag: var [column] = [value];
-      // so I'll split by column name and semicolon
-      for (let column of columnArr) {
-          let delimStart = `var ${column} = `;
-          let delimEnd = ";";
-          let value = script.split(delimStart)[1].split(delimEnd)[0];
-          // add to object (remove single quotes from string)
-          playerObj[column] = value.replace(/'/g,"");
-      }
-      // add image
-      let photo = script.split("var photog = ")[1].split(";")[0];
-      if (photo !== "''") {
-          photo = `http://www.tennisabstract.com/photos/${playerObj['fullname'].toLowerCase().replace(/ /g, "_")}-${photo}.jpg`;
-      }
-      playerObj['img'] = photo.replace(/'/g,"");
+//      // iterate through column array
+//      // column values can be found in script tag: var [column] = [value];
+//      // so I'll split by column name and semicolon
+//      for (let column of columnArr) {
+//          let delimStart = `var ${column} = `;
+//          let delimEnd = ";";
+//          let value = script.split(delimStart)[1].split(delimEnd)[0];
+//          // add to object (remove single quotes from string)
+//          playerObj[column] = value.replace(/'/g,"");
+//      }
+//      // add image
+//      let photo = script.split("var photog = ")[1].split(";")[0];
+//      if (photo !== "''") {
+//          photo = `http://www.tennisabstract.com/photos/${playerObj['fullname'].toLowerCase().replace(/ /g, "_")}-${photo}.jpg`;
+//      }
+//      playerObj['img'] = photo.replace(/'/g,"");
 
-      console.log(playerObj);
+//      console.log(playerObj);
       
-      // create player record
-      //Player.create(playerObj, function(err, newPlayer) {
-      //    if (err) {
-      //        console.log(err);
-      //    } else {
-      //        console.log(`Added ${playerObj['fullname']}`);
-      //    }
-      //})
+//      // create player record
+//      //Player.create(playerObj, function(err, newPlayer) {
+//      //    if (err) {
+//      //        console.log(err);
+//      //    } else {
+//      //        console.log(`Added ${playerObj['fullname']}`);
+//      //    }
+//      //})
 
-  });
-}
+//  });
+//}
 
-const getPlayersInDB = function() {
-  Player.find({}).select({'link_ta': 1, '_id': 0}).exec(function(err, players) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(players.map(player => player.link_ta));
+//const getPlayersInDB = function() {
+//  Player.find({}).select({'link_ta': 1, '_id': 0}).exec(function(err, players) {
+//    if (err) {
+//      console.log(err);
+//    } else {
+//      console.log(players.map(player => player.link_ta));
       
-    }
-  });
+//    }
+//  });
 
-}
+//}
 
 
 
