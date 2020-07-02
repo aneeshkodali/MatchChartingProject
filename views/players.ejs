@@ -1,9 +1,30 @@
 <%- include("partials/header") %>
 
-<h1>YOU HAVE REACHED THE PLAYER PAGE</h1>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome the Players Page</h1>
+            <p>Search for your favorite player!</p>
+        </div>
+    </header>
+    
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+       <% players.forEach(function(player){ %>
+           <div class="col-md-3 col-sm-6">
+               <div class="thumbnail">
+                  <img src="<%= player.img %>">
+                  <div class="caption">
+                      <h4><%= player.fullname %></h4>
+                  </div>
+                  <p>
+                      <a href="/players/<%= player._id %>" class="btn btn-primary">More Info</a>
+                  </p>
+               </div>
+           </div>
+       <% }); %>
+   </div>
+</div>
 
-<% players.forEach(function(player) { %>
-    <li><%= player %></li>
-<% }) %>
+
 
 <%- include("partials/footer") %>
