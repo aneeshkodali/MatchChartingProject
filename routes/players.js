@@ -20,7 +20,7 @@ router.get("/:id", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.send("PLAYER PAGE");
+            res.render("players/show", {player: foundPlayer});
         }
     })
 })
