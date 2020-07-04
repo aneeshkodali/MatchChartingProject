@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const Player = require("./models/player");
+const Match = require("./models/match");
 
 const seedDBPlayer = require("./seeds/player");
 
