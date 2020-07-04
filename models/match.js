@@ -11,7 +11,6 @@ const matchSchema = new mongoose.Schema({
     player1: String,
     player2: String,
     surface: String,
-    result: String,
     winner: String,
     loser: String,
     score: String,

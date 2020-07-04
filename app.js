@@ -7,6 +7,7 @@ const Player = require("./models/player");
 const Match = require("./models/match");
 
 const seedDBPlayer = require("./seeds/player");
+const seedDBMatch = require("./seeds/match")
 
 const playerRoutes = require("./routes/players");
 
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 
 seedDBPlayer();
+seedDBMatch();
 
 app.use("/players", playerRoutes);
 
