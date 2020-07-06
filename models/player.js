@@ -27,7 +27,10 @@ const playerSchema = new mongoose.Schema({
   atp_id: String,
   dc_id: String,
   wiki_id: String,
-  img: String
+  img: String,
+  matches: [
+    {type: mongoose.Schema.Types.ObjectId, ref: "Match"}
+  ]
 });
 
 // create model
