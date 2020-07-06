@@ -10,6 +10,7 @@ const matchSchema = new mongoose.Schema({
     round: String,
     player1: String,
     player2: String,
+    title: String,
     surface: String,
     winner: String,
     loser: String,

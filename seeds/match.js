@@ -12,6 +12,7 @@ const data = [
     round: "F",
     player1: "Roger Federer",
     player2: "Rafael Nadal",
+    title: "2008 Wimbledon F: Roger Federer vs Rafael Nadal",
     surface: "grass",
     winner: "Rafael Nadal",
     loser: "Roger Federer",
