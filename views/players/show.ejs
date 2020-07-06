@@ -6,8 +6,10 @@
     <img src="<%= player.img %>" alt="">
 </div>
 
-<% for (let match of player.matches) { %>
-    <li><%= match.title %></li>
-<% } %>
+<% player.matches.forEach(function(match) { %>
+    <li>
+        <a href="/matches/<%= match._id %>"><%= match.title %></a>
+    </li>
+ <% }) %>
 
 <%- include("../partials/footer") %>
