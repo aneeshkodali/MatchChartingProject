@@ -18,6 +18,22 @@ const data = [
     loser: "Roger Federer",
     score: "6-4 6-4 6-7(5) 6-7(8) 9-7",
     sets: 5
+    },
+
+    {
+    link: "http://www.tennisabstract.com/charting/20200130-M-Australian_Open-SF-Roger_Federer-Novak_Djokovic.html",
+    date: "2020-01-30",
+    gender: "M",
+    tournament: "Australian Open",
+    round: "SF",
+    player1: "Roger Federer",
+    player2: "Novak Djokovic",
+    title: "2020 Australian Open SF: Roger Federer vs Novak Djokovic",
+    surface: "hard",
+    winner: "Novak Djokovic",
+    loser: "Roger Federer",
+    score: "7-6(1) 6-4 6-3",
+    sets: 3
     }
 ];
 
