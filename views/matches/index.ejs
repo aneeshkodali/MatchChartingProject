@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome the Matches Page</h1>
+            <p>Find a match!</p>
+        </div>
+    </header>
+    
+    <% matches.forEach(function(match) { %>
+        <li><%= match.title %></li>
+    <% }) %>
+</div>
+
+
+
+<%- include("../partials/footer") %>

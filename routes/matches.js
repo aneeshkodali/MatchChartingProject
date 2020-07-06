@@ -8,8 +8,7 @@ router.get("/", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.send("MATCHES PAGE");
-            //res.render("players/index", {players: players});
+            res.render("matches/index", {matches: matches});
         }
     })
 });
