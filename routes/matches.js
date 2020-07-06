@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Match = require("../models/match");
 
-// INDEX - show all players
+// INDEX - show all matches
 router.get("/", function(req, res) {
     Match.find({}, function(err, matches) {
         if (err) {
@@ -13,17 +13,17 @@ router.get("/", function(req, res) {
     })
 });
 
-// SHOW - show more info for 1 player
-//router.get("/:id", function(req, res) {
-//    // find players with given ID
-//    Player.findById(req.params.id).populate("matches").exec(function(err, foundPlayer) {
-//        if (err) {
-//            console.log(err);
-//        } else {
-//            res.render("players/show", {player: foundPlayer});
-//        }
-//    })
-//})
+// SHOW - show more info for 1 match
+router.get("/:id", function(req, res) {
+    // find match with given ID
+    Match.findById(req.params.id).exec(function(err, foundMatch) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("matches/show", {match: foundMatch});
+        }
+    })
+})
 
 
 module.exports = router;

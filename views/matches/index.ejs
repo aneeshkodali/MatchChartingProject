@@ -9,7 +9,9 @@
     </header>
     
     <% matches.forEach(function(match) { %>
-        <li><%= match.title %></li>
+        <li>
+            <a href="/matches/<%= match._id %>"><%= match.title %></a>
+        </li>
     <% }) %>
 </div>
 
