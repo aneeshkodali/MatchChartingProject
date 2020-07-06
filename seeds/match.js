@@ -53,16 +53,17 @@ function seedDBMatch() {
                     console.log(err);
                 } else {
                     // loop through player1 and player2 and add match to their Player records
-                    // add match to Player 'matches' attribute
                     let players = [match.player1, match.player2];
                     for (let player of players) {
+                        // find player record
                         Player.findOne({fullname: player}, function(err, playerRecord) {
                             if (err) {
-                                console.log("No player found. Cannot add match to player");
+                                console.log(`no player record for ${player}. Cannot add match to player.`);
                             } else {
+                                // add match to matches array in player record
                                 playerRecord.matches.push(match);
                                 playerRecord.save();
-                                console.log("Added Match to Player Record!");
+                                console.log(`added match to ${player}'s player record!`);
                             }
                         })
                     }
