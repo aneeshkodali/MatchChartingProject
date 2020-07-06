@@ -6,4 +6,8 @@
     <img src="<%= player.img %>" alt="">
 </div>
 
+<% for (let match of player.matches) { %>
+    <li><%= match.link %></li>
+<% } %>
+
 <%- include("../partials/footer") %>

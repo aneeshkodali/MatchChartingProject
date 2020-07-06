@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
 // SHOW - show more info for 1 player
 router.get("/:id", function(req, res) {
     // find players with given ID
-    Player.findById(req.params.id).exec(function(err, foundPlayer) {
+    Player.findById(req.params.id).populate("matches").exec(function(err, foundPlayer) {
         if (err) {
             console.log(err);
         } else {
