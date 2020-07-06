@@ -10,6 +10,7 @@ const seedDBPlayer = require("./seeds/player");
 const seedDBMatch = require("./seeds/match")
 
 const playerRoutes = require("./routes/players");
+const matchRoutes = require("./routes/matches")
 
 
 // ================
@@ -25,7 +26,7 @@ seedDBPlayer();
 seedDBMatch();
 
 app.use("/players", playerRoutes);
-
+app.use("/matches", matchRoutes);
 
 // ================
 // DB CONFIG
