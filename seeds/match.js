@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Match = require("../models/match");
+const Player = require("../models/player");
 
 // seed data to add
 const data = [
@@ -29,12 +30,26 @@ function seedDBMatch() {
 
         // add seed data
         data.forEach(function(seed) {
-            // create record in DB
+            // create record in Match Table
             Match.create(seed, function(err, match) {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("added a match");
+                    // loop through player1 and player2 and add match to their Player records
+                    // add match to Player 'matches' attribute
+                    let players = [match.player1, match.player2];
+                    for (let player of players) {
+                        Player.findOne({fullname: player}, function(err, playerRecord) {
+                            if (err) {
+                                console.log("No player found. Cannot add match to player");
+                            } else {
+                                playerRecord.matches.push(match);
+                                playerRecord.save();
+                                console.log("Added Match to Player Record!");
+                            }
+                        })
+                    }
+                    
                 }
             })
         })
