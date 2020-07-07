@@ -33,17 +33,17 @@ app.use("/matches", matchRoutes);
 // ================
 
 // local connection
-const mongoDB =  process.env.MONGODB_URI || "mongodb://localhost/mcp";
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-//.then(() => console.log("CONNECTED TO DB"))
-//.catch(err => console.log(err));
+const MONGODB_URI =  process.env.MONGODB_URI || "mongodb://localhost/mcp";
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+.then(() => console.log("CONNECTED TO DB"))
+.catch(err => console.log(err));
 
 // Mongo Atlas
 //const mongoDB = "mongodb+srv://aneeshkodali:Low9gain!1@cluster0.bjlrc.mongodb.net/mcp?retryWrites=true&w=majority";
 //mongoose.connect(mongoDB, {useNewUrlParser: true});
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+//const db = mongoose.connection;
+//db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 
