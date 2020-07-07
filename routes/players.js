@@ -4,13 +4,30 @@ const Player = require("../models/player");
 
 // INDEX - show all players
 router.get("/", function(req, res) {
-    Player.find({}, function(err, players) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("players/index", {players: players});
-        }
-    })
+
+    // check if there is a search param
+    if (req.query.search) {
+        
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        // find player records
+        Player.find({fullname: regex}, function(err, players) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("players/index", {players: players});
+            }
+        })
+    } else {
+        // otherwise show all players...fix this later
+        Player.find({}, function(err, players) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("players/index", {players: players});
+            }
+        })
+    }
+    
 });
 
 // SHOW - show more info for 1 player
@@ -24,6 +41,10 @@ router.get("/:id", function(req, res) {
         }
     })
 })
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 
 module.exports = router;
