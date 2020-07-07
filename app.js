@@ -1,7 +1,7 @@
 // import
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 
 const Player = require("./models/player");
 const Match = require("./models/match");
@@ -18,7 +18,7 @@ const matchRoutes = require("./routes/matches")
 // ================
 const app = express();
 // parse request body as JSON
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.urlencoded({extended: true}));
 // config app to use ejs files
 app.set("view engine", "ejs");
 
@@ -31,10 +31,19 @@ app.use("/matches", matchRoutes);
 // ================
 // DB CONFIG
 // ================
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mcp";
-mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-.then(() => console.log("CONNECTED TO DB"))
-.catch(err => console.log(err));
+
+// local connection
+const mongoDB =  process.env.MONGODB_URI || "mongodb://localhost/mcp";
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+//.then(() => console.log("CONNECTED TO DB"))
+//.catch(err => console.log(err));
+
+// Mongo Atlas
+//const mongoDB = "mongodb+srv://aneeshkodali:Low9gain!1@cluster0.bjlrc.mongodb.net/mcp?retryWrites=true&w=majority";
+//mongoose.connect(mongoDB, {useNewUrlParser: true});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 
