@@ -1,7 +1,7 @@
 // import
 const express = require("express");
 const mongoose = require("mongoose");
-//const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 
 const Player = require("./models/player");
 const Match = require("./models/match");
@@ -18,7 +18,7 @@ const matchRoutes = require("./routes/matches")
 // ================
 const app = express();
 // parse request body as JSON
-//app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 // config app to use ejs files
 app.set("view engine", "ejs");
 

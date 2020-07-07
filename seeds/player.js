@@ -134,7 +134,7 @@ function seedDBPlayer() {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("added a player");
+                    console.log(`added ${player.fullname}`);
                 }
             })
         })
