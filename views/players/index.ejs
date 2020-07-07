@@ -8,14 +8,19 @@
         </div>
     </header>
 
-    <p>
-        <form action="/players" method="GET" class="form-inline">
-            <div class="form-group">
-                <input type="text" name="search" placeholder="Player Name" class="form-control">
-                <input type="submit" value="Search" class="btn btn-primary">
-            </div>
-        </form>
-    </p>
+    <div id="player-search">
+        <div id="player-search-type">
+            <form action="/players" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Player Name" class="form-control">
+                    <input type="submit" value="Search" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+        <div id="player-search-attributes">
+            CHECKBOXES FOR SEARCHING GO HERE
+        </div>
+    </div>
     
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
        <% players.forEach(function(player){ %>
