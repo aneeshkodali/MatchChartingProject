@@ -22,6 +22,10 @@ const app = express();
 // config app to use ejs files
 app.set("view engine", "ejs");
 
+// use public folder
+app.use(express.static(__dirname + "/public"));
+
+
 seedDBPlayer();
 seedDBMatch();
 
