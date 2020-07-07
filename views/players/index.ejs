@@ -7,15 +7,6 @@
             <p>Search for your favorite player!</p>
         </div>
     </header>
-
-    <p>
-        <form action="/players" method="GET" class="form-inline">
-            <div class="form-group">
-                <input type="text" name="search" placeholder="Player Name" class="form-control">
-                <input type="submit" value="Search" class="btn btn-default">
-            </div>
-        </form>
-    </p>
     
     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
        <% players.forEach(function(player){ %>
